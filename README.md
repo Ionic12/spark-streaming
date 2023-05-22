@@ -6,8 +6,8 @@ Tugas ini merupakan bagian dari mata kuliah Big Data dan berfokus pada topik Spa
 ## Metode 1: Mode Stateless Stream Processing
 <div align="justify">
 Pada Terminal 1, perintah nc -lk 9999 digunakan untuk membuka netcat dalam mode listening pada port 9999. Netcat adalah utilitas jaringan yang digunakan untuk membaca dan menulis data melalui koneksi jaringan.
-<img src="Terminal 1.1.png"/>
 </div>
+<img src="Terminal 1.1.png"/>
 <div>
 <pre>
 <code>
