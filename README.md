@@ -8,6 +8,10 @@ Tugas ini merupakan bagian dari mata kuliah Big Data dan berfokus pada topik Spa
 Pada Terminal 1, perintah nc -lk 9999 digunakan untuk membuka netcat dalam mode listening pada port 9999. Netcat adalah utilitas jaringan yang digunakan untuk membaca dan menulis data melalui koneksi jaringan.
 </div>
 <img src="Terminal 1.1.png"/>
+<div align="justify">
+Pada Terminal 2, perintah spark-submit --master local[*] network_wordcount.py localhost 9999 digunakan untuk menjalankan aplikasi Spark Streaming yang disebut network_wordcount.py. Aplikasi ini akan terhubung ke sumber data di localhost dengan menggunakan port 9999.
+</div>
+<img src="Terminal 1.2.png"/>
 <div>
 <pre>
 <code>
