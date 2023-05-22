@@ -53,6 +53,11 @@ if __name__ == "__main__":
     ssc.awaitTermination()
 </code>
 </pre>
+
+### Output 
+
+<img src="Output 1.png"/>
+
 <p align="justify">
 Kode di atas adalah contoh program PySpark untuk melakukan streaming penghitungan kata dari sebuah socket. Program ini menggunakan StreamingContext untuk membuat konteks streaming Spark, membaca aliran data dari socket menggunakan socketTextStream, dan melakukan operasi-transformasi seperti flatMap, map, dan reduceByKey untuk menghitung jumlah kata yang sama. Hasil penghitungan kata dicetak menggunakan pprint(). Program ini memulai proses streaming dengan start() dan menunggu hingga proses streaming berakhir dengan awaitTermination(). Secara keseluruhan, program ini memanfaatkan PySpark untuk melakukan streaming dan pengolahan data secara real-time dari socket.
 </p>
