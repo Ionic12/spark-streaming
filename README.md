@@ -134,13 +134,14 @@ PySpark dan Spark Streaming untuk melakukan pengolahan data streaming dengan kea
 Untuk melanjutkan praktik sebelumnya dengan transformasi data menggunakan sentimen kata sederhana, kita dapat memodifikasi kode sebelumnya atau menggunakan metode baru.
 </div>
 
-### Terminal 1
+### Mempersiapkan Folder Untuk File AFINN-111.txt dan Copy File  AFINN-111.txt
 
 <div align="justify">
-Pada Terminal 1, perintah nc -lk 9999 digunakan untuk membuka netcat dalam mode listening pada port 9999. Netcat adalah utilitas jaringan yang digunakan untuk membaca dan menulis data melalui koneksi jaringan.
+Untuk membuat folder baru untuk file AFINN-111.txt, Anda dapat membuka terminal atau command prompt, pindah ke direktori yang diinginkan menggunakan perintah cd, dan menggunakan perintah mkdir diikuti dengan nama folder yang ingin Anda buat. Misalnya, Anda dapat menggunakan perintah mkdir data untuk membuat folder "data". Selanjutnya, Anda dapat menggunakan perintah mkdir data/streaming untuk membuat folder "streaming" di dalam folder "data". Setelah folder baru dibuat, Anda dapat menyalin file AFINN-111.txt ke folder tersebut menggunakan perintah cp AFINN-111.txt /opt/spark/examples/src/main/python/streaming/data/streaming. 
 </div>
 <br>
-<img src="Terminal 2.1.png"/>
+<img src="Text 3.1.png"/>
+<img src="Text 3.2.png"/>
 
 ### Terminal 2
 
@@ -210,11 +211,37 @@ PySpark untuk menghitung kata-kata paling bahagia (happiest words) dalam data st
 ## Pengertian Kode
 <table>
   <tr>
+    <th>No</th>
     <th>Kode</th>
     <th>Penjelasan</th>
   </tr>
   <tr>
+    <td>1</td>
     <td>sys.argv, sys.stderr, StreamingContext, sc, socketTextStream, reduceByKey, lambda line, awaitTermination</td>
-    <td align="justify">Pengertian kode, sys.argv digunakan untuk mendapatkan argumen baris perintah seperti hostname dan port. sys.stderr digunakan untuk mencetak pesan kesalahan. StreamingContext dan sc digunakan untuk membuat konteks streaming dan Spark. socketTextStream digunakan untuk membaca data streaming dari soket. reduceByKey digunakan untuk menggabungkan nilai-nilai yang sama dalam aliran streaming. lambda line adalah fungsi anonim yang digunakan untuk memisahkan baris masukan menjadi kata-kata. awaitTermination digunakan untuk menunggu penghentian konteks streaming. Secara keseluruhan, kode ini menggabungkan elemen-elemen ini untuk membangun dan menjalankan aplikasi streaming menggunakan PySpark dan Spark Streaming.</td>
+    <td align="justify">Dalam konteks Spark Streaming, beberapa elemen penting yang sering digunakan adalah sys.argv untuk mengambil argumen baris perintah, sys.stderr untuk mencetak pesan kesalahan, StreamingContext untuk mengatur aliran streaming, sc untuk menginisialisasi konteks Spark, socketTextStream untuk membuat aliran streaming dari soket, reduceByKey untuk menggabungkan nilai-nilai berdasarkan kunci dalam data streaming, lambda line sebagai fungsi anonim untuk memproses setiap baris data streaming, dan awaitTermination untuk menunggu hingga konteks streaming dihentikan. Semua elemen ini berguna dalam membangun dan menjalankan aplikasi streaming menggunakan Spark Streaming dalam konteks Spark.</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>nc, lk</td>
+    <td align="justify">
+nc, singkatan dari "netcat", adalah utilitas baris perintah yang digunakan untuk mengirim dan menerima data melalui koneksi jaringan. Dalam konteks yang disebutkan, nc digunakan untuk membuat soket dan mengaktifkan mode "listening" atau "server" dengan opsi -l. Ini memungkinkan netcat untuk menerima koneksi dari klien atau program lain yang ingin mengirimkan data melalui koneksi jaringan. Opsi -k digunakan agar netcat tetap berjalan setelah koneksi ditutup, sehingga tetap dapat mendengarkan pada port tertentu (9999 dalam kasus ini) dan menerima koneksi berikutnya setelah koneksi sebelumnya ditutup. Dalam kode yang diberikan, netcat digunakan untuk mengirimkan data streaming ke soket yang akan dibaca oleh program PySpark.</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>spark-submit, master, local[*]</td>
+    <td align="justify">
+Dalam konteks Spark Streaming, spark-submit adalah perintah untuk mengirim dan menjalankan aplikasi PySpark Streaming. Parameter master pada perintah tersebut digunakan untuk menentukan master atau manajer cluster yang akan digunakan, seperti local untuk menjalankan aplikasi Streaming pada satu mesin lokal. Nilai local[*] pada master menunjukkan penggunaan semua core yang tersedia pada mesin lokal, sehingga memungkinkan pemrosesan paralel. Dengan menggunakan spark-submit dan pengaturan master sebagai local[*], aplikasi Streaming dapat dijalankan secara lokal dengan pemanfaatan semua core yang tersedia untuk pemrosesan paralel.</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>ssc.checkpoint, parallelize, updateStateByKey, flatMap</td>
+    <td align="justify">
+Dalam konteks Spark Streaming, ssc.checkpoint digunakan untuk mengatur checkpoint directory yang menyimpan status streaming untuk pemulihan setelah kegagalan. parallelize digunakan untuk membuat RDD dari koleksi data di dalam program dan dapat digunakan dalam operasi-transformasi pada DStream. updateStateByKey adalah operasi untuk menghitung stateful stream dengan mempertahankan dan memperbarui state berdasarkan kunci dan batch data baru. flatMap digunakan untuk memetakan setiap elemen dalam DStream menjadi nol atau lebih elemen dalam DStream baru. Kesemuanya ini berguna dalam pengaturan checkpoint, pembuatan RDD, perhitungan stateful, dan transformasi elemen dalam Spark Streaming.</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>rdd.take(5), transform, rdd.sortByKey(False)</td>
+    <td align="justify">
+Dalam konteks Spark Streaming, rdd.take(5) adalah metode yang digunakan untuk mengambil 5 elemen teratas dari RDD batch saat ini dalam bentuk list. transform adalah metode pada DStream yang digunakan untuk menerapkan transformasi pada data streaming, menghasilkan DStream baru dengan perubahan yang diterapkan pada setiap elemen dalam setiap batch data streaming. rdd.sortByKey(False) adalah metode yang digunakan untuk mengurutkan elemen RDD batch saat ini berdasarkan kunci dengan urutan menurun. Dalam Spark Streaming, elemen-elemen ini digunakan untuk mengambil sejumlah elemen teratas dari RDD, menerapkan transformasi pada DStream, dan mengurutkan elemen RDD berdasarkan kunci dalam batch data streaming.</td>
   </tr>
 </table>
