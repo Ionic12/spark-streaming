@@ -15,17 +15,31 @@ Pada Terminal 2, perintah spark-submit --master local[*] network_wordcount.py lo
 <div>
 <pre>
 <code>
-from pyspark import *
-from pyspark.sql import *
-spark = SparkSession.builder.appName("metode1").getOrCreate()
-sc = spark.sparkContext
-mylist = [(50, "DataFrame"),(60, "pandas")]
-myschema = ['col1', 'col2']
-df1 = spark.createDataFrame(mylist, myschema)
-df1.show()
+from __future__ import print_function
+
+import sys
+
+from pyspark import SparkContext
+from pyspark.streaming import StreamingContext
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: network_wordcount.py <hostname> <port>", file=sys.stderr)
+        exit(-1)
+    sc = SparkContext(appName="PythonStreamingNetworkWordCount")
+    ssc = StreamingContext(sc, 1)
+
+    lines = ssc.socketTextStream(sys.argv[1], int(sys.argv[2]))
+    counts = lines.flatMap(lambda line: line.split(" "))\
+                  .map(lambda word: (word, 1))\
+                  .reduceByKey(lambda a, b: a+b)
+    counts.pprint()
+
+    ssc.start()
+    ssc.awaitTermination()
 </code>
 </pre>
 <p align="justify">
-PySpark untuk membuat sebuah DataFrame pada Spark. Proses yang terjadi meliputi impor modul-modul PySpark, pembuatan objek SparkSession dengan nama aplikasi "metode1", pembuatan objek SparkContext untuk menghubungkan Spark dengan cluster, pembuatan list yang berisi tuple data, pembuatan list yang berisi nama kolom, pembuatan objek DataFrame dengan metode createDataFrame(), dan terakhir memanggil metode show() pada objek DataFrame untuk menampilkan isi dari DataFrame.
+Kode di atas adalah contoh program PySpark untuk melakukan streaming penghitungan kata dari sebuah socket. Program ini menggunakan StreamingContext untuk membuat konteks streaming Spark, membaca aliran data dari socket menggunakan socketTextStream, dan melakukan operasi-transformasi seperti flatMap, map, dan reduceByKey untuk menghitung jumlah kata yang sama. Hasil penghitungan kata dicetak menggunakan pprint(). Program ini memulai proses streaming dengan start() dan menunggu hingga proses streaming berakhir dengan awaitTermination(). Secara keseluruhan, program ini memanfaatkan PySpark untuk melakukan streaming dan pengolahan data secara real-time dari socket.
 </p>
 </div>
