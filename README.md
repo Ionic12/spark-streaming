@@ -143,7 +143,7 @@ Untuk membuat folder baru untuk file AFINN-111.txt, Anda dapat membuka terminal 
 <img src="Text 3.1.png"/>
 <img src="Text 3.2.png"/>
 
-### Terminal 2
+### Output
 
 <div align="justify">
 Pada Terminal 2, perintah spark-submit --master local[*] network_wordjoinsentiments.py localhost 9999 digunakan untuk menjalankan aplikasi Spark Streaming yang disebut network_wordjoinsentiments.py. Aplikasi ini akan terhubung ke sumber data di localhost dengan menggunakan port 9999.
