@@ -5,9 +5,14 @@ Tugas ini merupakan bagian dari mata kuliah Big Data dan berfokus pada topik Spa
 
 ## Metode 1: Mode Stateless Stream Processing
 <div align="justify">
+Buka 2 terminal atau CMD untuk melakukan simulasi stateless stream processing dengan spark streaming.
+</div>
+### Terminal 1
+<div align="justify">
 Pada Terminal 1, perintah nc -lk 9999 digunakan untuk membuka netcat dalam mode listening pada port 9999. Netcat adalah utilitas jaringan yang digunakan untuk membaca dan menulis data melalui koneksi jaringan.
 </div>
 <img src="Terminal 1.1.png"/>
+### Terminal 2
 <div align="justify">
 Pada Terminal 2, perintah spark-submit --master local[*] network_wordcount.py localhost 9999 digunakan untuk menjalankan aplikasi Spark Streaming yang disebut network_wordcount.py. Aplikasi ini akan terhubung ke sumber data di localhost dengan menggunakan port 9999.
 </div>
