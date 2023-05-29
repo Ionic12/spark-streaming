@@ -211,13 +211,13 @@ PySpark untuk menghitung kata-kata paling bahagia (happiest words) dalam data st
 ## Pengertian Kode
 <table>
   <tr>
-    <th>No</th>
+    <th align="center">No</th>
     <th>Kode</th>
     <th>Penjelasan</th>
   </tr>
   <tr>
-    <td>1</td>
-    <td>sys.argv, sys.stderr, StreamingContext, sc, socketTextStream, reduceByKey, lambda line, awaitTermination</td>
+    <td align="center">1</td>
+    <td align="center">sys.argv, sys.stderr, StreamingContext, sc, socketTextStream, reduceByKey, lambda line, awaitTermination</td>
     <td align="justify">Dalam konteks Spark Streaming, beberapa elemen penting yang sering digunakan adalah sys.argv untuk mengambil argumen baris perintah, sys.stderr untuk mencetak pesan kesalahan, StreamingContext untuk mengatur aliran streaming, sc untuk menginisialisasi konteks Spark, socketTextStream untuk membuat aliran streaming dari soket, reduceByKey untuk menggabungkan nilai-nilai berdasarkan kunci dalam data streaming, lambda line sebagai fungsi anonim untuk memproses setiap baris data streaming, dan awaitTermination untuk menunggu hingga konteks streaming dihentikan. Semua elemen ini berguna dalam membangun dan menjalankan aplikasi streaming menggunakan Spark Streaming dalam konteks Spark.</td>
   </tr>
   <tr>
